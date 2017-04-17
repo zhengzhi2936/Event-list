@@ -12,6 +12,7 @@ class Event < ApplicationRecord
  def to_param
    self.friendly_id
  end
+ belongs_to :category, :optional => true
 protected
  # def generate_friendly_id
  #   self.friendly_id = SecureRandom.uuid
