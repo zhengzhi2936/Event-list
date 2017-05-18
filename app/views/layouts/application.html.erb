@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application'%>
   </head>
 
   <body>
@@ -49,9 +49,12 @@
         </div><!--/.container-fluid -->
       </nav>
 
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-
+      <% if notice %>
+        <p class="notice alert-success"><%= notice %></p>
+      <% end %>
+       <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+       <% end %>
 
       <%= yield %>
    <%= link_to "中文版", :controller => controller_name, :action => action_name, :locale => "zh-CN" %>
