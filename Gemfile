@@ -10,7 +10,7 @@ end
 gem 'rails', '~> 5.0.2'
 
 gem 'bootstrap-sass'
-
+gem 'kaminari'
 gem 'devise'
 
 # Use sqlite3 as the database for Active Record
