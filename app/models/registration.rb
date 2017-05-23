@@ -15,7 +15,8 @@ class Registration < ApplicationRecord
   def to_param
     self.uuid
   end
-
+  scope :by_status, ->(s){ where( :status => s ) }
+  scope :by_ticket, ->(t){ where( :ticket_id => t ) }
   protected
     def check_event_status
       if self.event.status == "draft"
