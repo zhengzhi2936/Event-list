@@ -4,7 +4,8 @@ class Event < ApplicationRecord
 
  validates_uniqueness_of :friendly_id
  validates_format_of :friendly_id, :with => /\A[a-z0-9\-]+\z/
-
+ scope :only_public, -> { where( :status => "public" ) }
+ scope :only_available, -> { where( :status => ["public", "private"] ) }
  STATUS = ["draft", "public", "private"]
  validates_inclusion_of :status, :in => STATUS
  has_many :tickets, :dependent => :destroy
