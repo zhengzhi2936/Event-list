@@ -7,6 +7,7 @@ class Registration < ApplicationRecord
   belongs_to :event
   belongs_to :ticket
   belongs_to :user, :optional => true
+  has_paper_trail
 
   before_validation :generate_uuid, :on => :create
   attr_accessor :current_step
@@ -17,6 +18,7 @@ class Registration < ApplicationRecord
   end
   scope :by_status, ->(s){ where( :status => s ) }
   scope :by_ticket, ->(t){ where( :ticket_id => t ) }
+
   protected
     def check_event_status
       if self.event.status == "draft"
