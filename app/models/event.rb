@@ -11,7 +11,7 @@ class Event < ApplicationRecord
  has_many :tickets, :dependent => :destroy
  has_many :registrations, :dependent => :destroy
  accepts_nested_attributes_for :tickets, :allow_destroy => true, :reject_if => :all_blank
- # before_validation :generate_friendly_id, :on => :create
+ before_validation :generate_friendly_id, :on => :create
  include RankedModel
  ranks :row_order
 
@@ -20,7 +20,7 @@ class Event < ApplicationRecord
  end
  belongs_to :category, :optional => true
 protected
- # def generate_friendly_id
- #   self.friendly_id = SecureRandom.uuid
- # end
+  def generate_friendly_id
+    self.friendly_id = SecureRandom.uuid
+  end
 end
